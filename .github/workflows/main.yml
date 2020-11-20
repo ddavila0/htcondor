@@ -28,6 +28,8 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
+        context: build/docker/services
+        file: build/docker/services/cm/Dockerfile
         tags: ddavila0/htcondor-cm:8.9.9-el7
         build-args: |
           EL=7
