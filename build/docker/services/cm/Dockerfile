@@ -9,6 +9,10 @@ ARG EL
 ARG VERSION
 ARG BUILDDATE
 
+# ddavila: adding CA certs for GSI auth
+RUN yum -y install https://repo.opensciencegrid.org/osg/3.5/osg-3.5-el7-release-latest.rpm
+RUN yum -y install osg-ca-certs
+
 # https://label-schema.org/rc1
 LABEL org.label-schema.name="htcondor/cm:${VERSION}-el${EL}${SUFFIX}" \
       org.label-schema.description="HTCondor ${VERSION} central manager image for RHEL ${EL}-compatible" \
