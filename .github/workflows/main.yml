@@ -13,6 +13,10 @@ jobs:
     #if: startsWith(github.repository, 'opensciencegrid/')
     steps:
     - uses: actions/checkout@v2
+    
+    - name: make date tag
+      id: mkdatetag
+      run: echo "::set-output name=dtag::$(date +%Y%m%d-%H%M)"
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
@@ -30,7 +34,7 @@ jobs:
         push: true
         context: build/docker/services
         file: build/docker/services/cm/Dockerfile
-        tags: ddavila0/htcondor-cm:8.9.9-el7
+        tags: ddavila0/htcondor-cm-8.9.9-el7:${{ steps.mkdatetag.outputs.dtag }}
         build-args: |
           EL=7
           VERSION=8.9.9
