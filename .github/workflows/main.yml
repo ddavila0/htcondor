@@ -34,8 +34,8 @@ jobs:
         push: true
         context: build/docker/services
         file: build/docker/services/cm/Dockerfile
-        tags: ddavila0/htcondor-cm-8.8.12-el7:${{ steps.mkdatetag.outputs.dtag }}
+        tags: ddavila0/htcondor-cm-8.9.9-el7:${{ steps.mkdatetag.outputs.dtag }}
         build-args: |
           EL=7
-          VERSION=8.8.12
+          VERSION=8.9.9
     
