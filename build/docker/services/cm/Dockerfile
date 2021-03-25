@@ -21,6 +21,11 @@ LABEL org.label-schema.name="htcondor/cm:${VERSION}-el${EL}${SUFFIX}" \
 
 COPY cm/condor/*.conf /etc/condor/config.d/
 
+# ddavila: Adding a script used to push ganglia monitoring data to influxDB
+# needs to be activated by adding the following in the configs:
+# GANGLIA_GMETRIC = /usr/local/bin/metrics-influxdb-condor-gangliad
+COPY cm/misc/metrics-influxdb-condor-gangliad /usr/local/bin/metrics-influxdb-condor-gangliad
+
 EXPOSE 9618
 
 LABEL org.label-schema.build-date="${BUILDDATE}"
